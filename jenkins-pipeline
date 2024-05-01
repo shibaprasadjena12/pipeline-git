@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+                git branch: 'main', changelog: false, credentialsId: 'git-shib', poll: false, url: 'https://github.com/shibaprasadjena12/converted-react.git'            }
+        }
+        stage('build') {
+            steps {
+                sh 'sudo docker build -t rituparna1997/react-project .'
+                sh 'sudo docker images'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'sudo docker run -d -p 8081:3000 rituparna1997/react-project:latest'
+                sh 'sudo docker container ps'
+            }
+        }
+    }
+}
