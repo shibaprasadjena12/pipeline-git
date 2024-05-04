@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: '${{BRANCH}}', changelog: false, credentialsId: 'git-shib', poll: false, url: 'https://github.com/shibaprasadjena12/converted-react.git'}
+                git branch: '${{{BRANCH}}}', changelog: false, credentialsId: 'git-shib', poll: false, url: 'https://github.com/shibaprasadjena12/converted-react.git'}
         }
         stage('build') {
             steps { 
