@@ -8,6 +8,7 @@ pipeline {
         }
         stage('build') {
             steps {
+                sh 'sudo docker syestem prune -a -y' 
                 sh 'sudo docker build -t rituparna1997/react-project .'
                 sh 'sudo docker images'
             }
